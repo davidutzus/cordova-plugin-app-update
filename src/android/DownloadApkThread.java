@@ -46,7 +46,7 @@ public class DownloadApkThread implements Runnable {
         this.mHandler = mHandler;
         this.authentication = new AuthenticationOptions(options);
 
-        this.mSavePath = Environment.getExternalStorageDirectory() + "/" + "download"; // SD Path
+        this.mSavePath = mContext.getExternalFilesDir(null) + "/download"; // app-private dir, no permission (Android 10+ scoped-storage safe)
         this.downloadHandler = new DownloadHandler(mContext, mProgress, mDownloadDialog, this.mSavePath, mHashMap);
     }
 
